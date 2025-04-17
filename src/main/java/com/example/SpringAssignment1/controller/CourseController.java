@@ -2,9 +2,11 @@ package com.example.SpringAssignment1.controller;
 
 import com.example.SpringAssignment1.Course;
 import com.example.SpringAssignment1.service.CourseService;
-import org.springframework.web.bind.annotation.*;
+
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,13 +36,13 @@ public class CourseController {
     }
 
     @PostMapping
-    public ResponseEntity<Course> addCourse(@RequestBody Course course) {
+    public ResponseEntity<Course> addCourse(@Valid @RequestBody Course course) {
         Course newCourse = courseService.addCourse(course);
         return ResponseEntity.status(HttpStatus.CREATED).body(newCourse);
     }
 
     @PutMapping("/{name}")
-    public ResponseEntity<Course> updateCourse(@PathVariable String name, @RequestBody Course course) {
+    public ResponseEntity<Course> updateCourse(@PathVariable String name, @Valid @RequestBody Course course) {
         Course updated = courseService.updateCourse(name, course);
         if (updated != null) {
             return ResponseEntity.ok(updated);
