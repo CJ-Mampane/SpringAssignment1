@@ -4,6 +4,7 @@ import com.example.SpringAssignment1.Course;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -11,10 +12,12 @@ public class CourseService {
     private final List<Course> courses = new ArrayList<>();
 
     public CourseService() {
-        courses.add(new Course("Foundation Courses", new String[]{"Computer Literacy for Science", "Elementary computer programming"}));
-        courses.add(new Course("Undergraduate Courses", new String[]{"Introduction to computing and programming concepts", "Elementary computer programming",
-                "Advanced programming", "Computer architecture and organization", "Data structures and algorithms"}));
-        courses.add(new Course("Honors Courses", new String[]{"Computer networks", "Distributed and parallel computing", "Advanced Java", "E-business fundamentals"}));
+        courses.add(new Course("Foundation Courses", Arrays.asList("Computer Literacy for Science", "Elementary computer programming")));
+        courses.add(new Course("Undergraduate Courses", Arrays.asList(
+                "Introduction to computing and programming concepts", "Elementary computer programming",
+                "Advanced programming", "Computer architecture and organization", "Data structures and algorithms")));
+        courses.add(new Course("Honors Courses", Arrays.asList(
+                "Computer networks", "Distributed and parallel computing", "Advanced Java", "E-business fundamentals")));
     }
 
     public List<Course> getCourses() {
