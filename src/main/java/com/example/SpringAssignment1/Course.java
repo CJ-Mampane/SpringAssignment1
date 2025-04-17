@@ -1,17 +1,26 @@
 package com.example.SpringAssignment1;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import java.util.List;
+
 public class Course {
+
+    @NotNull(message = "Course name must not be null")
+    @NotEmpty(message = "Course name must not be empty")
     private String name;
-    private String[] category;
+
+    @NotNull(message = "Course list must not be null")
+    @NotEmpty(message = "At least one course must be provided")
+    private List<String> category;
 
     public Course() {}
 
-    public Course(String name, String[] category) {
+    public Course(String name, List<String> category) {
         this.name = name;
         this.category = category;
     }
 
-    // Getters and setters
     public String getName() {
         return name;
     }
@@ -20,11 +29,11 @@ public class Course {
         this.name = name;
     }
 
-    public String[] getCategory() {
+    public List<String> getCategory() {
         return category;
     }
 
-    public void setCategory(String[] category) {
+    public void setCategory(List<String> category) {
         this.category = category;
     }
 }
