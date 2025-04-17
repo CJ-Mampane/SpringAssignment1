@@ -23,5 +23,34 @@ public class CourseService {
         return courses;
     }
 
+    // Get a course category by its name
+    public Course getCourseByName(String name) {
+        return courses.stream()
+                .filter(course -> course.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
+    }
+
+    // Add a new course category
+    public Course addCourse(Course course) {
+        courses.add(course);
+        return course;
+    }
+
+    // Update an existing course category by name
+    public Course updateCourse(String name, Course updatedCourse) {
+        Course existingCourse = getCourseByName(name);
+        if (existingCourse != null) {
+            existingCourse.setName(updatedCourse.getName());
+            existingCourse.setCategory(updatedCourse.getCategory());
+            return existingCourse;
+        }
+        return null;
+    }
+
+    // Delete a course category by name
+    public boolean deleteCourse(String name) {
+        return courses.removeIf(course -> course.getName().equalsIgnoreCase(name));
+    }
    
 }
