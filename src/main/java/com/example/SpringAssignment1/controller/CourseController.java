@@ -1,3 +1,15 @@
+package com.example.SpringAssignment1.controller;
+
+import com.example.SpringAssignment1.Course;
+import com.example.SpringAssignment1.service.CourseService;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/courses")
 public class CourseController {
 
     private final CourseService courseService;
